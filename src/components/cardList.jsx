@@ -4,10 +4,16 @@ import { loadData } from "../utils/loadData";
 import Card from "./card"; 
 
 const List = Styled.ul`
+    display:flex; 
     list-style-type: none; 
     margin: 1rem auto; 
     padding: 16px; 
 `; 
+
+const CardItem= Styled.li`
+    padding: 16px; 
+`
+
 
 class CardList extends Component {
     state = {
@@ -15,7 +21,7 @@ class CardList extends Component {
     }; 
 
     async componentDidMount() {
-        const response = await loadData(`https://randomuser.me/api/?results=2`); 
+        const response = await loadData(`https://randomuser.me/api/?results=4`); 
         const users = response.results; 
         this.setState({
             users
@@ -27,10 +33,9 @@ class CardList extends Component {
         return (
             <List>
                {users.map(user => (
-                   <li key={user.login.uuid}>
+                   <CardItem key={user.login.uuid}>
                        <Card user={user} /> 
-                       {user.name.first} {user.name.last}
-                   </li>
+                   </CardItem>
                ))}
             </List>
         );

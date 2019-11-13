@@ -33,7 +33,7 @@ it("renders user data", async () => {
         render(<Card user={fakeUser}/>, container); 
     })
 
-    expect(container.querySelector("h2").textContent).toBe(`${fakeUser.name.first}, ${fakeUser.name.last}`)
+    expect(container.querySelector("h2").textContent).toBe(`${fakeUser.name.first} ${fakeUser.name.last}`)
     expect(container.textContent).toContain(fakeUser.email);
 
     global.fetch.mockRestore(); 
